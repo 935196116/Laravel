@@ -18,9 +18,10 @@ use Auth;
 
 class HousePublishController extends Controller{
 
-    public function __construct()
-    {
-        $this->middleware('auth');
+
+    public function get(){
+        $data = Houses::orderBy("updated_at","desc")->paginate(5);
+        return response()->json($data);
     }
     public  function getPrivate(Request $req){
         return Houses::where("id",$req->id)->orderBy("updated_at","desc")->first();
@@ -95,7 +96,7 @@ class HousePublishController extends Controller{
         $file = $req->img;
 
 
-        $result = $uploader->save($file, 'tmp', "xiaobai", 818);
+        $result = $uploader->save($file, 'tmp', Auth::id(), 818);
         $data = [
             'code' => 0,
             'path' => $result['path'],

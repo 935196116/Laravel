@@ -41,6 +41,9 @@ $api->version('v2', function($api) {
 //新增区域
 $api->version('v1',[ 'namespace' => 'App\Http\Controllers\Api'],function ($api){
 //
+    header("Access-Control-Allow-Origin: http://localhost:3000");
+
+    header('Access-Control-Allow-Credentials:true');  //允许访问Cookie
     $api->get('region',['uses'=>'RegionController@get'])
         ->name('api.region.get');
 //    $api->get('getHousing',['uses'=>'HousingController@get'])
@@ -54,6 +57,9 @@ $api->version('v1',[ 'namespace' => 'App\Http\Controllers\Api'],function ($api){
 
     $api->get('deco',['uses'=>'DecorateController@get'])
         ->name('api.deco.get');
+
+    $api->get('houses',['uses'=>'HousePublishController@get'])
+        ->name('api.houses.get');
 
 
 ////

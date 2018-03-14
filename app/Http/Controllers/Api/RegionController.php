@@ -16,6 +16,8 @@ use Illuminate\Session\TokenMismatchException;
 class RegionController extends Controller{
 
     public  function get(){
+
+
         return Region::where('parent_id',0)->select('id','_name as name')->orderBy("name","desc")->get();
     }
     public function getList(){
