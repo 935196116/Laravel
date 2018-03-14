@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                   你好,Volankey
                 </div>
 
                 <div class="links">
