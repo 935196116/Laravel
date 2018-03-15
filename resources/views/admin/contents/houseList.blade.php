@@ -262,7 +262,7 @@
             console.log(data);
             var  slider = $('#slider-content');
 //                var str = "";
-            data.forEach(function (item,index) {
+            data && data.forEach(function (item,index) {
                 if(item.src)
                 {
                     var desc =item.desc?item.desc:"";

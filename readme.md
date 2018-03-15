@@ -15,10 +15,26 @@ mysql> source jyxb.sql
 
 ## 目前问题
 
-在 app/oberservers/xssfilter.php 定义观察器
 
-在    /providers/AppServiceProvider.php boot方法中 注册观察器与HouseList 模型 关联
 
-但是在 Controllers/Api/HousePublishController.php 中 的add方法 创建新行 无法执行 观察器的方法
+~~在 app/oberservers/xssfilter.php 定义观察器~~
 
-具体执行在 jyxb.com/manage/housePublish.html 发布新的房源 无法过滤 特殊字符串
+~~在    /providers/AppServiceProvider.php boot方法中 注册观察器与HouseList 模型 关联~~
+
+~~但是在Controllers/Api/HousePublishController.php 中 的add方法 创建新行 无法执行 观察器的方法~~
+
+~~具体执行在 jyxb.com/manage/housePublish.html 发布新的房源 无法过滤 特殊字符串~~
+
+---
+
+**已修复**
+
+上述问题原因是 laravel自动加载机制是默认一个文件一个类，所以把 HouseList独立成文件就可以了
+如果还遇到找不到HouseList的问题，请运行 
+
+```
+$ composer dumpautoload
+```
+
+
+
